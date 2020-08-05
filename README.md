@@ -33,4 +33,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
- 
+
+## Other behaviours and more features
+
+Check out the other branches.
