@@ -12,6 +12,11 @@ This is a Django project template with all necessary stuff to run a functional p
     - Return user info with tokens at login.
     - CORS headers allowing all hosts.
     - Swagger docs.
+- Tenant apps via [django-tenant-schemas](https://github.com/bernardopires/django-tenant-schemas).
+    - __Organization__ model is the tenant base.
+    - `core` app is shared (in `public` schema).
+    - Use `migrate_schemas` instead of built-in `migrate` command.
+    - Custom middleware to select `schema_name` from the request's header (`X-DTS-HEADER`). Default schema is `public`.
 
 ## Usage
 
@@ -29,13 +34,12 @@ source venv/bin/activate
 ```
 > Only works with Python 3.X, use `python3` if is necessary.
 
-3. Change the database backend in `settings.py` at line 72 and it parameters.
+3. Change the database parameters in `settings.py` at line 77.
 
 4. Install dependencies from `requirements.txt` by running:
 ```
 pip install -r requirements.txt 
 ```
-> Install database driver if its necessary.
  
 5. Create migration files:
 ```
@@ -44,15 +48,20 @@ python manage.py makemigrations
 
 6. Apply migrations:
 ```
-python manage.py migrate
+python manage.py migrate_schemas
 ```
 
-7. Run project:
+7. Create a super user specifying `schema` name:
+```
+createsuperuser --username=admin --schema=public
+```
+
+8. Run project:
 ```
 python manage.py runserver
 ```
 
-8. Enjoy =)
+9. Enjoy =)
 
 
 ## Other behaviours and more features

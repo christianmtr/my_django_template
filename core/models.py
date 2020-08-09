@@ -1,6 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from tenant_schemas.models import TenantMixin
 
 
 class UserManager(BaseUserManager):
@@ -33,9 +34,9 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class Organization(models.Model):
+class Organization(TenantMixin):
     name = models.CharField(max_length=150, blank=False, null=False)
-    ruc = models.CharField(max_length=11, blank=False, null=False)
+    ruc = models.CharField(max_length=11, blank=False, null=False, unique=True)
     address = models.CharField(max_length=300, blank=True, null=False)
     phone_number = models.CharField(max_length=9, blank=True, null=False)
 

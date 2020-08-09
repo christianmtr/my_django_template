@@ -36,9 +36,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'tenant_schemas',
+    'core',
 ]
 
 MIDDLEWARE = [
+    'core.middleware.XHeaderTenantMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -73,8 +77,12 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'tenant_schemas.postgresql_backend',
+        'NAME': '{{ project_name }}_db',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
 
@@ -143,3 +151,9 @@ SWAGGER_SETTINGS = {
 CORS_ORIGIN_REGEX_WHITELIST = [
     r".*",
 ]
+
+TENANT_MODEL = "core.Organization"
+
+DATABASE_ROUTERS = (
+    'tenant_schemas.routers.TenantSyncRouter',
+)
