@@ -29,7 +29,23 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+SHARED_APPS = [
+    # apps synced to public schema
+    'tenant_schemas',
+    'core',
+
+    'django.contrib.contenttypes',
+]
+
+TENANT_APPS = [
+    'django.contrib.contenttypes',
+
+    # apps to be synced with all your tenants
+]
+
 INSTALLED_APPS = [
+    'tenant_schemas',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'tenant_schemas',
     'core',
 ]
 
