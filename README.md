@@ -7,6 +7,11 @@ This is a Django project template with all necessary stuff to run a functional p
 - Organization model with some basic attributes.
 - User model (from Abstract model) with foreign key to Organization model.
 - User's email to login (`username` field is copied from email).
+- Rest API support:
+    - Login. Obtain access token and refresh access token.
+    - Return user info with tokens at login.
+    - CORS headers allowing all hosts.
+    - Swagger docs.
 
 ## Usage
 
@@ -46,6 +51,8 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+
+8. Enjoy =)
 
 
 ## Other behaviours and more features
