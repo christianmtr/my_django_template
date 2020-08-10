@@ -24,7 +24,7 @@ You must have installed Django on your system to use `django-admin` command.
 
 1. Create a new project by running:
 ```
-django-admin startproject --template https://github.com/christianmtr/my_django_template/archive/master.zip new_django_project .
+django-admin startproject --template https://github.com/christianmtr/my_django_template/archive/master.zip --extensions=py,json new_django_project .
 ```
 
 2. Create and active an virtual environment:
@@ -51,17 +51,27 @@ python manage.py makemigrations
 python manage.py migrate_schemas
 ```
 
-7. Create a super user specifying `schema` name:
+7. Create `public` tenant:
 ```
-createsuperuser --username=admin --schema=public
+python manage.py loaddata organization 
 ```
 
-8. Run project:
+8. Create own organization:
+```
+python manage.py create_public_organization
+```
+
+8. Create a super user specifying `schema` name:
+```
+python manage.py createsuperuser
+```
+
+9. Run project:
 ```
 python manage.py runserver
 ```
 
-9. Enjoy =)
+10. Enjoy =)
 
 
 ## Other behaviours and more features

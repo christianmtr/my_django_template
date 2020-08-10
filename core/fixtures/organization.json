@@ -1,0 +1,11 @@
+[
+  {
+    "model": "core.Organization",
+    "pk": 1,
+    "fields": {
+      "name": "Public",
+      "domain_url": "public.{{ project_name }}.com",
+      "schema_name": "public"
+    }
+  }
+]

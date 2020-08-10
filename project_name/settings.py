@@ -50,6 +50,7 @@ TENANT_APPS = [
 
 INSTALLED_APPS = [
     'tenant_schemas',
+    'core.apps.CoreConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +59,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'core',
+    'rest_framework',
+    'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [

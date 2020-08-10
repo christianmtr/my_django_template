@@ -45,7 +45,7 @@ class Organization(TenantMixin):
 
 
 class User(AbstractUser):
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, blank=True, null=True)
     email = models.EmailField(unique=True, null=True)
 
     USERNAME_FIELD = 'email'
