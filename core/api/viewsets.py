@@ -2,7 +2,8 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from core.api.serializers import OrganizationSerializer, UserSerializer, UserDetailedSerializer
+from core.api.serializers import OrganizationSerializer, UserSerializer, UserDetailedSerializer, \
+    CustomTokenObtainPairSerializer
 from core.models import Organization, User
 
 
